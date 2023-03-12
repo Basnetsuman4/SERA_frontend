@@ -67,60 +67,87 @@ export function BulkEntry() {
     <>
       <div className="contain" id="blur">
         <div className="bulk">
-          <div className="check1">
-            <div className="inputBx">
-              <h4>Upgrade students to next semester</h4>
-              <button
-                type="submit"
-                id="submitbtn"
-                name=""
-                onClick={handleSemesterClick}
-              >
-                Upgrade
-              </button>
+          <div className="bulkBody">
+            {/* <div className="BBupgrade">
+              <div className="upgradeDiv">
+                <span>Upgrade students to next semester? </span>
+                <div id="fUpgradeBtn">
+                  <button
+                    type="submit"
+                    value="Upgrade"
+                    name=""
+                    id="btn"
+                    onClick={handleButtonClick}
+                  >Upgrade</button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="stream">
-            <Label for="exampleSelect">Stream</Label>
-            <Input
-              type="select"
-              name="selectStream"
-              id="selectStream"
-              onChange={handlefaculty}
-            >
-              <option>-Choose-- </option>
-              <option value="1">BCT - Bachelors in Computer Engineering</option>
-              <option value="2">BCE - Bachelors in Civil Engineering</option>
-            </Input>
-          </div>
-          <div className="batch">
-            <Input
-              type="text"
-              id="selectBatch"
-              name=""
-              placeholder="Enter batch"
-              onChange={handlebatch}
-            />
-          </div>
-          <div className="amount">
-            <Input
-              type="text"
-              id="selectAmount"
-              name=""
-              placeholder="Enter semester fee"
-              onChange={handleamount}
-            />
-          </div>
-          <div className="button">
-            <button
-              type="submit"
-              id="submitbtn"
-              value="Submit"
-              name=""
-              onClick={handleButtonClick}
-            >
-              Submit
-            </button>
+            <div className="BBfeeupgrade">
+              <div className="FUhead">
+                <span>Fee Entry</span>
+              </div>
+              <div className="FUbody">
+                <div className="stream">
+                  <Label for="exampleSelect">Stream</Label>
+                  <Input
+                    type="select"
+                    name="selectStream"
+                    id="selectStream"
+                    onChange={handlefaculty}
+                  >
+                    <option disabled selected value="">--Choose-- </option>
+                    <option value="1">BCT - Bachelors in Computer Engineering</option>
+                    <option value="2">BCE - Bachelors in Civil Engineering</option>
+                  </Input>
+                </div>
+                <div className="batch">
+                  <Label for="exampleSelect">Batch</Label>
+                  <Input
+                    type="text"
+                    id="selectBatch"
+                    name=""
+                    placeholder="Enter batch"
+                    onChange={handlebatch}
+                  />
+                </div>
+                <div className="amount">
+                  <Label for="exampleSelect">Amount</Label>
+                  <Input
+                    type="text"
+                    id="selectAmount"
+                    name=""
+                    placeholder="Enter semester fee"
+                    onChange={handleamount}
+                  />
+                </div>
+              </div>
+              <div className="fUpgradeBtn">
+                <button
+                  type="submit"
+                  value="Upgrade"
+                  name=""
+                  id="btn"
+                  onClick={handleButtonClick}>
+                  Upgrade
+                </button>
+              </div>
+
+            </div> */}
+            <div className="confirmationDiv">
+              <span>Confirm Upgrade?</span>
+              <div className="CUbtns">
+                <div id="fUpgradeBtn">
+                  <button
+                    id="btn"
+                  >Yes</button>
+                </div>
+                <div id="fUpgradeBtn">
+                  <button
+                    id="btn"
+                  >No</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

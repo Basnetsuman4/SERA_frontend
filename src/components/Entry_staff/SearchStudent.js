@@ -4,6 +4,7 @@ import { Card, CardHeader, CardBody, Label, Input } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../apis";
 
+
 const SearchStudent = () => {
   const navigate = useNavigate();
   const { tokenInstance } = useToken();
@@ -56,7 +57,7 @@ const SearchStudent = () => {
                 id="selectStream"
                 onChange={handlebatch}
               >
-                <option>-Choose-- </option>
+                <option disabled selected value="">--Select-- </option>
                 {batches.map((batch) => (
                   <option>{batch}</option>
                 ))}
@@ -70,7 +71,7 @@ const SearchStudent = () => {
                 id="selectStream"
                 onChange={handlefaculty}
               >
-                <option>-Choose-- </option>
+                <option disabled selected value="">--Select--</option>
                 <option value="1">
                   BCT - Bachelors in Computer Engineering
                 </option>
@@ -92,79 +93,82 @@ const SearchStudent = () => {
             </div>
           </div>
         </div>
-        {filteredPersons.length == 0 && (
-          <CardBody className="SCard">
-            <div className="search-card">
-              <p>No results found</p>
-            </div>
-          </CardBody>
-        )}
-        {filteredPersons && (
-          <CardBody className="SCard">
-            <div className="search-card">
-              {filteredPersons.map((person) => (
-                <>
-                  <div className="individualCard">
-                    <div className="imageSec">
-                      <img
-                        id="img-profile"
-                        src={person.image}
-                        alt="demo"
-                        rel="norefferer"
-                      />
+        <div className="CardFSearchStd">
+          <div className="searchStudentCard">
+
+            {filteredPersons.length == 0 && (
+              <div className="search-card">
+                <p>No results found</p>
+              </div>
+            )}
+            {filteredPersons && (
+              <div className="search-card">
+                {filteredPersons.map((person) => (
+                  <>
+                    <div className="individualCardd">
+                      <ul>
+                        <div className="imageSec">
+                          <img
+                            id="img-profile"
+                            src={person.image}
+                            alt="demo"
+                            rel="norefferer"
+                          />
+                        </div>
+                        <div className="nameId">
+                          <div className="name">
+                            <span>
+                              {person.firstName} {person.lastName}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="option">
+                          <div className="selectBtn">
+                            <button
+                              id="searchbtn"
+                              onClick={() =>
+                                navigate("/secure/searchstudent/selection", {
+                                  state: { person: person, btnid: 1 },
+                                  replace: true,
+                                })
+                              }
+                            >
+                              Upload Results
+                            </button>
+                          </div>
+                          <div className="selectBtn">
+                            <button
+                              id="searchbtn"
+                              onClick={() =>
+                                navigate("/secure/searchstudent/selection", {
+                                  state: { person: person, btnid: 2 },
+                                })
+                              }
+                            >
+                              View Results
+                            </button>
+                          </div>
+                          <div className="selectBtn">
+                            <button
+                              id="searchbtn"
+                              onClick={() =>
+                                navigate("/secure/searchstudent/selection", {
+                                  state: { person: person, btnid: 3 },
+                                })
+                              }
+                            >
+                              Edit Results
+                            </button>
+                          </div>
+                        </div>
+                      </ul>
                     </div>
-                    <div className="nameId">
-                      <div className="name">
-                        <span>
-                          {person.firstName} {person.lastName}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="option">
-                      <div className="selectBtn">
-                        <button
-                          id="view"
-                          onClick={() =>
-                            navigate("/secure/searchstudent/selection", {
-                              state: { person: person, btnid: 1 },
-                              replace: true,
-                            })
-                          }
-                        >
-                          UpLoad Result
-                        </button>
-                      </div>
-                      <div className="selectBtn">
-                        <button
-                          id="view"
-                          onClick={() =>
-                            navigate("/secure/searchstudent/selection", {
-                              state: { person: person, btnid: 2 },
-                            })
-                          }
-                        >
-                          View Result
-                        </button>
-                      </div>
-                      <div className="selectBtn">
-                        <button
-                          id="view"
-                          onClick={() =>
-                            navigate("/secure/searchstudent/selection", {
-                              state: { person: person, btnid: 3 },
-                            })
-                          }
-                        >
-                          Edit Result
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              ))}
-            </div>
-          </CardBody>
-        )}
+                  </>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </Card>
     </>
   );

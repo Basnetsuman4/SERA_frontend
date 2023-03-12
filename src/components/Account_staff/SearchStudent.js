@@ -36,6 +36,10 @@ const SearchStudent = () => {
     setFacultyField(e.target.value);
   };
 
+
+
+
+
   return (
     <>
       <Card>
@@ -91,12 +95,12 @@ const SearchStudent = () => {
         </div>
         <div className="CardFSearchStd">
           <div className="searchStudentCard">
+
             {filteredPersons.length == 0 && (
               <div className="search-card">
                 <p>No results found</p>
               </div>
             )}
-
             {filteredPersons && (
               <div className="search-card">
                 {filteredPersons.map((person) => (

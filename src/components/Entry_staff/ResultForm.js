@@ -137,7 +137,7 @@ const ResultForm = () => {
                   <Table responsive>
                     <thead>
                       <tr>
-                        <th>Sub_ID</th>
+                        {/* <th>Sub_ID</th> */}
                         <th>Subject</th>
                         <th>Total Mark</th>
                         <th>Pass Mark</th>

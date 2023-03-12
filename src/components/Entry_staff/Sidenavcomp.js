@@ -1,6 +1,7 @@
 import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
+import SearchIcon from '@mui/icons-material/Search';
+import GroupsIcon from '@mui/icons-material/Groups';
 import LogoutIcon from "@mui/icons-material/Logout";
 import PasswordIcon from "@mui/icons-material/Password";
 
@@ -19,12 +20,12 @@ export const EntrystaffSidenavcomp = [
   },
   {
     title: "Search",
-    icon: <PasswordIcon />,
+    icon: <SearchIcon />,
     link: "/secure/searchstudent",
   },
   {
     title: "Bulk",
-    icon: <PasswordIcon />,
+    icon: <GroupsIcon />,
     link: "/secure/bulkentry",
   },
 

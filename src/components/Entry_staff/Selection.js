@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Input, Label } from "reactstrap";
+import { Input, Label, Card } from "reactstrap";
 import { useToken } from "../../apis";
+import "../../css/SearchStudent.css";
+
 
 export function Selection() {
   const navigate = useNavigate();
@@ -49,49 +51,58 @@ export function Selection() {
   };
   return (
     <>
-      <div className="semester">
-        <Label for="exampleSelect">Semester</Label>
-        <Input
-          type="select"
-          name="selectSemester"
-          id="selectSemester"
-          onChange={handlesemester}
-        >
-          <option>-Choose-- </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </Input>
-      </div>
-      <div className="stream">
-        <Label for="exampleSelect">Stream</Label>
-        <Input
-          type="select"
-          name="selectStream"
-          id="selectStream"
-          onChange={handlefaculty}
-        >
-          <option>-Choose-- </option>
-          <option value="1">BCT - Bachelors in Computer Engineering</option>
-          <option value="2">BCE - Bachelors in Civil Engineering</option>
-        </Input>
-      </div>
-      <div className="btnsection">
-        <div className="inputBx">
-          <input
-            type="submit"
-            id="submitbtn"
-            value="Submit"
-            name=""
-            onClick={handleButtonClick}
-          />
+      <Card>
+
+        <div className="sections">
+          <div className="selectsection">
+
+            <div className="stream">
+              <Label for="exampleSelect">Stream</Label>
+              <Input
+                type="select"
+                name="selectStream"
+                id="selectStream"
+                onChange={handlefaculty}
+
+              >
+                <option disabled selected value="">--Choose-- </option>
+                <option value="1">BCT - Bachelors in Computer Engineering</option>
+                <option value="2">BCE - Bachelors in Civil Engineering</option>
+              </Input>
+            </div>
+            <div className="stream">
+              <Label for="exampleSelect">Semester</Label>
+              <Input
+                type="select"
+                name="selectSemester"
+                id="selectSemester"
+                onChange={handlesemester}
+              >
+
+                <option disabled selected value="">--Choose-- </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </Input>
+            </div>
+          </div>
+          <div className="btnsection">
+            <div className="inputBx">
+              <input
+                type="submit"
+                id="searchbtn"
+                value="Search"
+                onClick={handleButtonClick}
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      </Card>
     </>
   );
 }

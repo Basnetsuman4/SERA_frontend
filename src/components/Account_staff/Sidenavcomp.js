@@ -5,6 +5,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PasswordIcon from "@mui/icons-material/Password";
+import SearchIcon from '@mui/icons-material/Search';
 
 import "../../css/Sidenavcomp.css";
 
@@ -21,7 +22,7 @@ export const AccountSidenavcomp = [
   },
   {
     title: "Search",
-    icon: <DescriptionIcon />,
+    icon: <SearchIcon />,
     link: "/secure/searchstudent",
   },
   {

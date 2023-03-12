@@ -1,0 +1,116 @@
+.dash_body .header {
+  height: 12%;
+  display: flex;
+  align-items: center;
+}
+
+.SearchBarDiv {
+  position: relative;
+  padding-top: 1.5rem;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  border-radius: 10px;
+  margin-left: 2rem;
+}
+
+.SearchStudent {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+ .body {    /* yesle serach student admin ko ma affect gariraxa*/
+  display: flex;
+  justify-content: center;
+}
+
+::-webkit-scrollbar {
+  /* hides the scroll bar*/
+  width: 0.2em;
+  background-color: transparent;
+}
+
+.Secard {
+  position: relative;
+  overflow: auto;
+  margin-top: 2rem;
+  height: 60vh;
+  width: 95%;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.individualCarddd {
+  width: 95%;
+}
+
+.individualCarddd ul {
+  height: 8rem;
+  margin: 1rem 0rem;
+  border-radius: 20px;
+  background-color: #e48888;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.individualCarddd .imageSec #img-profile {
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.imageSec {
+  height: 7em;
+  width: 7rem;
+  overflow: hidden;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0px;
+}
+
+.nameId {
+  height: 90%;
+  width: 20%;
+  margin: 0 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+/* .name {
+  text-align: center;
+} */      /* yo chai form ko fullname ma ni connected xa */
+
+span {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.option {
+  height: 90%;
+  width: 65%;
+  margin: 0 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.option button {
+  background-color: aqua;
+  border-radius: 15px;
+  width: 7rem;
+  font-weight: 500;
+}
+
+.option button:hover {
+  box-shadow: 0px 0px 15px 2px rgb(0, 173, 231);
+}

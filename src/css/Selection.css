@@ -1,0 +1,20 @@
+.semesterResults{
+    padding: 1rem 2rem;
+}
+
+
+.FindResultBody{
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btnsectionForResult{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 1px ;
+}
+

@@ -1,0 +1,15 @@
+.graphBody{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.graphSection{
+    width: 80%;
+}
+
+.graphButton{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}

@@ -19,7 +19,7 @@ const Scholarship = () => {
   const [data, setData] = useState([]);
   const location = useLocation();
   const detail = location.state;
-  console.log(detail);
+  // console.log(detail);
   const amount = useRef(null);
   const [semester, setSemester] = useState(null);
 
@@ -69,15 +69,14 @@ const Scholarship = () => {
   const [faculty, setFaculty] = useState(null);
 
   useEffect(() => {
-      if (data.faculty == 1) {
-        setFaculty("BCT - Bachelors in Computer Engineering");
-      }
-      if (data.faculty == 2) {
-        setFaculty("BCE - Bachelors in Civil Engineering");
+    if (data.faculty == 1) {
+      setFaculty("BCT - Bachelors in Computer Engineering");
+    }
+    if (data.faculty == 2) {
+      setFaculty("BCE - Bachelors in Civil Engineering");
       // console.log(faculty);
     }
   }, [data]);
-
 
   return (
     <>
@@ -92,10 +91,10 @@ const Scholarship = () => {
               <div className="billing">
                 <Form className="AccFormInfo">
                   <div className="inputSection">
-
                     <FormGroup className="name">
                       <div className="forIndentation">
-                        <Label for="FullName">Full Name:</Label></div>
+                        <Label for="FullName">Full Name:</Label>
+                      </div>
                       <div className="IndentationData">
                         {data.firstName} {data.lastName}
                       </div>
@@ -103,42 +102,38 @@ const Scholarship = () => {
 
                     <FormGroup className="Identity">
                       <div className="forIndentation">
-                        <Label for="username">Username:</Label></div>
-                      <div className="IndentationData">
-                        {data.userName}
+                        <Label for="username">Username:</Label>
                       </div>
+                      <div className="IndentationData">{data.userName}</div>
                     </FormGroup>
 
                     <FormGroup className="Identity">
                       <div className="forIndentation">
-                        <Label for="username">Program:</Label></div>
-                      <div className="IndentationData">
-                        {faculty}
+                        <Label for="username">Program:</Label>
                       </div>
+                      <div className="IndentationData">{faculty}</div>
                     </FormGroup>
 
                     <FormGroup className="batch">
                       <div className="forIndentation">
-                        <Label for="exampleBatch">Batch:</Label></div>
-                      <div className="IndentationData">
-                        {data.batch}
+                        <Label for="exampleBatch">Batch:</Label>
                       </div>
+                      <div className="IndentationData">{data.batch}</div>
                     </FormGroup>
 
                     <FormGroup className="sem">
                       <div className="forIndentation">
                         <Label for="examplesem">Semester:</Label>
                       </div>
-                      <div className="IndentationData">
-                        {data.semester}
-                      </div>
+                      <div className="IndentationData">{data.semester}</div>
                     </FormGroup>
 
                     <FormGroup>
                       <div className="forIndentation">
                         <Label for="exampleSelect">
                           Select which Semester to set Scholarship to{" "}
-                        </Label></div>
+                        </Label>
+                      </div>
                       <div className="IndentationData">
                         <Input
                           type="select"
@@ -146,7 +141,9 @@ const Scholarship = () => {
                           id="selectStream"
                           onChange={handlesemester}
                         >
-                          <option disabled selected value="">--Choose--</option>
+                          <option disabled selected value="">
+                            --Choose--
+                          </option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -161,7 +158,8 @@ const Scholarship = () => {
 
                     <FormGroup className="Contract">
                       <div className="forIndentation">
-                        <Label for="dueFee">Scholarship Amount</Label></div>
+                        <Label for="dueFee">Scholarship Amount</Label>
+                      </div>
                       <div className="IndentationData">
                         <Input
                           type="number"
@@ -170,7 +168,8 @@ const Scholarship = () => {
                           placeholder="Enter Amount"
                           min="0"
                           innerRef={amount}
-                        /></div>
+                        />
+                      </div>
                     </FormGroup>
                   </div>
 
@@ -192,13 +191,20 @@ const Scholarship = () => {
         </div>
       </div>
       <div id="popup">
-        <div onClick={toggle} className="close">
+        <div
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+          className="close"
+        >
           +
         </div>
         <h2> {postResult}</h2>
         <button
           onClick={() => {
             toggle();
+            window.location.reload(true);
           }}
         >
           Close

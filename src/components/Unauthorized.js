@@ -10,6 +10,8 @@ export default function Unauthorized() {
   return (
     <>
       <div className="body">
+        <div id="dash_clock" style={{ display: "none" }}></div>
+
         <div className="UNbody">
           <div className="UNBox">
             <div className="UNformBox">
@@ -19,7 +21,10 @@ export default function Unauthorized() {
                   alt="access denied"
                 />
                 <p>You do not have permission to access this page.</p>
-                <button id="btn" onClick={goBack}>Go Back</button>
+                <button id="btn"
+                  style={{ color: "white", border: "none" }} onClick={goBack}>
+                  Go Back
+                </button>
               </div>
             </div>
           </div>

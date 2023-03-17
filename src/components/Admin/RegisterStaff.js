@@ -101,8 +101,6 @@ function RegisterStaff() {
       });
   }
 
-
-
   const imageRef = useRef(null);
 
   function handleImageChange(event) {
@@ -112,16 +110,33 @@ function RegisterStaff() {
     reader.onload = function (event) {
       const img = imageRef.current;
       img.src = event.target.result;
-      img.style.display = 'block';
+      img.style.display = "block";
     };
 
     reader.readAsDataURL(file);
   }
-
-
-
-
-
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    // e.preventDefault();
+    // if (firstName !== "" && lastName !== "" && password !== "") {
+    if (
+      !firstName.current.value &&
+      !lastName.current.value &&
+      !password.current.value &&
+      !userName.current.value &&
+      !email.current.value &&
+      !address.current.value &&
+      !contact.current.value
+    ) {
+      console.log("Please fill out all fields before submitting");
+    } else {
+      console.log("Form is ready to submit");
+      setPostResult("Loading");
+      postData();
+      toggle();
+    }
+  };
+  // console.log("f", firstName.current.value);
 
   return (
     <>
@@ -131,7 +146,13 @@ function RegisterStaff() {
             <h1>Registration</h1>
           </div>
           <div className="RegBody">
-            <Form className="RegFormInfo">
+            <Form
+              className="RegFormInfo"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+            >
               <div className="inputSection">
                 <FormGroup className="namenn">
                   <Label for="FullName">Full Name</Label>
@@ -140,6 +161,7 @@ function RegisterStaff() {
                       type="text"
                       name="firstName"
                       id="firstName"
+                      required
                       innerRef={firstName}
                       placeholder="First Name"
                     />
@@ -147,6 +169,7 @@ function RegisterStaff() {
                       type="text"
                       name="lastName"
                       id="lastName"
+                      required
                       innerRef={lastName}
                       placeholder="Last Name"
                     />
@@ -159,6 +182,7 @@ function RegisterStaff() {
                     type="email"
                     name="email"
                     id="exampleEmail"
+                    required
                     autoComplete="none"
                     innerRef={email}
                     onChange={formik.handleChange}
@@ -178,6 +202,7 @@ function RegisterStaff() {
                     type="text"
                     name="setuserName"
                     id="setuserName"
+                    required
                     autoComplete="none"
                     innerRef={userName}
                     placeholder="Set username"
@@ -189,6 +214,7 @@ function RegisterStaff() {
                     type="text"
                     name="setPassword"
                     id="setPassword"
+                    required
                     autoComplete="none"
                     innerRef={password}
                     placeholder="Set Password"
@@ -200,6 +226,7 @@ function RegisterStaff() {
                     type="text"
                     name="Address"
                     id="Address"
+                    required
                     innerRef={address}
                     placeholder="Enter Address"
                   />
@@ -210,8 +237,9 @@ function RegisterStaff() {
                   <Input
                     type="tel"
                     pattern="[9][0-9]{9}"
-                    maxlength="10"
-                    required title="Please enter 10 digit number starting with 9"
+                    maxLength="10"
+                    required
+                    title="Please enter 10 digit number starting with 9"
                     name="Contact"
                     id="ContactInfo"
                     innerRef={contact}
@@ -225,14 +253,17 @@ function RegisterStaff() {
                     type="select"
                     name="selectstaff"
                     id="setstaff"
+                    required
                     innerRef={role}
                   >
-                    <option disabled selected value="">Select Type </option>
+                    <option disabled selected value="">
+                      Select Type{" "}
+                    </option>
                     <option value="2">Account staff</option>
                     <option value="3">Entry staff</option>
                   </Input>
                 </FormGroup>
-                <FormGroup >
+                <FormGroup>
                   <Label for="exampleFile">Photo</Label>
                   <div className="imageSectionForForm">
                     <div>
@@ -251,18 +282,9 @@ function RegisterStaff() {
                     </div>
                   </div>
                 </FormGroup>
-
               </div>
               <div className="sub-btn">
-                <Button
-                  variant="primary"
-                  // onClick={postData}
-                  onClick={() => {
-                    setPostResult("Loading");
-                    postData();
-                    toggle();
-                  }}
-                >
+                <Button variant="primary" type="submit">
                   Register Staff
                 </Button>
               </div>
@@ -271,7 +293,14 @@ function RegisterStaff() {
         </div>
       </div>
       <div id="popup">
-        <div id="test1" onClick={toggle} className="close">
+        <div
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+          className="close"
+        >
           +
         </div>
         {postResult && (
@@ -280,7 +309,13 @@ function RegisterStaff() {
           </div>
         )}
 
-        <button id="test1" onClick={toggle}>
+        <button
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+        >
           Close
         </button>
       </div>

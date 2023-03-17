@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-
 import { Button, Form, FormGroup, Label, Input, CardHeader } from "reactstrap";
 import "../../css/RegForm.css";
 import { useToken } from "../../apis";
@@ -30,7 +29,7 @@ function RegisterStudent() {
   const password = useRef(null);
   const [role, setRole] = useState(4);
   const email = useRef(null);
-  const faculty = useRef(null);
+  const [faculty, setFacultyField] = useState();
   const batch = useRef(null);
   const semester = useRef(null);
   const [image, setImage] = useState("");
@@ -90,7 +89,7 @@ function RegisterStudent() {
       role: role,
       email: email.current.value,
       // faculty: faculty.current.id,
-      faculty: 1,
+      faculty: faculty,
       batch: batch.current.value,
       semester: semester.current.value,
       image: image,
@@ -109,10 +108,10 @@ function RegisterStudent() {
         // console.log("data:", postData);
       });
   }
-
-
-
-
+  const handlefaculty = (e) => {
+    console.log(e.target.value);
+    setFacultyField(e.target.value);
+  };
 
   const imageRef = useRef(null);
 
@@ -123,43 +122,35 @@ function RegisterStudent() {
     reader.onload = function (event) {
       const img = imageRef.current;
       img.src = event.target.result;
-      img.style.display = 'block';
+      img.style.display = "block";
     };
 
     reader.readAsDataURL(file);
   }
 
-
-
-
-
-  // const [formValues, setFormValues] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   email: ""
-  // });
-
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    // if (firstName !== "" && lastName !== "" && password !== "") {
     if (
-      firstName !== "" &&
-      lastName !== "" &&
-      password !== ""
+      !firstName.current.value &&
+      !lastName.current.value &&
+      !password.current.value &&
+      !userName.current.value &&
+      !email.current.value &&
+      !address.current.value &&
+      !contact.current.value &&
+      !faculty.current.value &&
+      !batch.current.value &&
+      !semester.current.value
     ) {
+      console.log("Please fill out all fields before submitting");
+    } else {
+      console.log("Form is ready to submit");
       setPostResult("Loading");
       postData();
       toggle();
-      console.log("Form is ready to submit");
-      // Add code here to submit the form
-    } else {
-      console.log("Please fill out all fields before submitting");
     }
   };
-
-
-
-
-
 
   return (
     <>
@@ -169,7 +160,13 @@ function RegisterStudent() {
             <h1>Registration</h1>
           </div>
           <div className="RegBody">
-            <Form className="RegFormInfo" onSubmit={handleSubmit} >
+            <Form
+              className="RegFormInfo"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+            >
               <div className="inputSection">
                 <FormGroup className="namenn">
                   <Label for="FullName">Full Name</Label>
@@ -188,8 +185,6 @@ function RegisterStudent() {
                       type="text"
                       name="lastName"
                       id="lastName"
-                      // value={lastName}
-                      // onChange={handleChange}
                       required
                       innerRef={lastName}
                       placeholder="Last Name"
@@ -259,7 +254,7 @@ function RegisterStudent() {
                   <Label for="Contact">Contact no.</Label>
                   <Input
                     pattern="[9][0-9]{9}"
-                    maxlength="10"
+                    maxLength="10"
                     required
                     type="tel"
                     autoComplete="none"
@@ -276,16 +271,18 @@ function RegisterStudent() {
                     <Input
                       type="select"
                       name="selectStream"
-                    // id="selectStream"
-                    // innerRef={faculty}
+                      required
+                      onChange={handlefaculty}
                     >
-                      <option disabled selected value="">Choose Stream</option>
-                      <option id="1" ref={faculty}>
+                      <option disabled selected value="">
+                        Choose Stream
+                      </option>
+                      <option value="1">
                         BCT - Bachelors in Computer Engineering
                       </option>
-                      {/* <option id="2" ref={faculty}>
+                      <option value="2">
                         BCE - Bachelors in Civil Engineering
-                      </option> */}
+                      </option>
                     </Input>
                   </div>
                   <div>
@@ -294,8 +291,12 @@ function RegisterStudent() {
                       type="select"
                       name="setSemester"
                       id="setSemester"
+                      required
                       innerRef={semester}
-                    ><option disabled selected value="">Select Semester</option>
+                    >
+                      <option disabled selected value="">
+                        Select Semester
+                      </option>
                       <option id="1">1</option>
                       <option id="2">2</option>
                       <option id="3">3</option>
@@ -304,13 +305,8 @@ function RegisterStudent() {
                       <option id="6">6</option>
                       <option id="7">7</option>
                       <option id="8">8</option>
-                      <option id="9">9</option>
                     </Input>
                   </div>
-                </FormGroup>
-
-                <FormGroup>
-                  {/* <Input type="text" name="setSemester" id="setSemester" innerRef={semester} placeholder="Set Semester" /> */}
                 </FormGroup>
 
                 <FormGroup>
@@ -322,11 +318,10 @@ function RegisterStudent() {
                     innerRef={batch}
                     placeholder="Set Batch"
                     required
-
                   />
                 </FormGroup>
 
-                <FormGroup >
+                <FormGroup>
                   <Label for="exampleFile">Photo</Label>
                   <div className="imageSectionForForm">
                     <div>
@@ -347,27 +342,23 @@ function RegisterStudent() {
                 </FormGroup>
               </div>
               <div className="sub-btn">
-                <Button
-                  variant="primary"
-                  // onClick={postData}
-                  type="submit"
-                  disabled={!firstName || !lastName || !email}
-                  onClick={() => {
-                    // setPostResult("Loading");
-                    // postData();
-                    // toggle();
-                    handleSubmit();
-                  }}
-                >
+                <Button variant="primary" type="submit">
                   Register Student
                 </Button>
               </div>
             </Form>
           </div>
         </div>
-      </div >
+      </div>
       <div id="popup">
-        <div id="test1" onClick={toggle} className="close">
+        <div
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+          className="close"
+        >
           +
         </div>
         {postResult && (
@@ -376,7 +367,13 @@ function RegisterStudent() {
           </div>
         )}
 
-        <button id="test1" onClick={toggle}>
+        <button
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+        >
           Close
         </button>
       </div>

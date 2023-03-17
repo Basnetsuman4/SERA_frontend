@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CardHeader } from "reactstrap";
 import { useToken } from "../../apis";
 import "../../css/Voucher.css";
 
@@ -24,10 +23,12 @@ export function VoucherValidate() {
   return (
     <>
       {/* <div className="wholeBody"> */}
-      <CardHeader>
-        <h1>VOUCHER DETAILS</h1>
-      </CardHeader>
-      {data.length == 0 && <div>No vouchers to validate.</div>}
+      <div className="title">
+        <h1>Voucher Details</h1>
+      </div>
+      {data.length == 0 && (
+        <div className="msgForLogout">No vouchers to validate.</div>
+      )}
       {data.length !== 0 && (
         <div className="mainBody">
           <div className="forColumnFormat">
@@ -61,8 +62,7 @@ export function VoucherValidate() {
             {/* </div> */}
           </div>
         </div>
-      )
-      }
+      )}
     </>
   );
 }

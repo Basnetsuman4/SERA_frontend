@@ -12,11 +12,13 @@ const KhaltiConfig = () => {
   useEffect(() => {
     setMessage("Loading");
   }, []);
+  console.log("conf", description);
 
   let config = {
     // replace this key with yours
     publicKey: myKey.publicTestKey,
-    productIdentity: description,
+    // productIdentity: description,
+    productIdentity: sessionStorage.getItem("product_Id"),
     productName: `${username}`,
     productUrl: "http://dummy.com",
     eventHandler: {

@@ -10,12 +10,14 @@ export default function Graph() {
   const { tokenInstance } = useToken();
   const [dataset, setDataSet] = useState([]);
   const [postresult, setpostresult] = useState("");
+  let showbutton = false;
 
   useEffect(() => {
     tokenInstance
       .get(`graph/data/${username}`)
       .then((res) => {
         setDataSet(res.data);
+        console.log(dataset);
       })
       .catch((err) => {
         setDataSet(null);
@@ -23,6 +25,13 @@ export default function Graph() {
       });
   }, []);
   console.log(dataset);
+
+  if (dataset.length !== 0) {
+    if (dataset.x.length !== 0 && dataset.y.length !== 0) {
+      showbutton = true;
+    }
+  }
+
   const state = {
     // labels: ["Sem1", "Sem2", "Sem3", "Sem4", "Sem5"],
     labels: dataset.x,
@@ -81,16 +90,23 @@ export default function Graph() {
               />
             </div>
           </div>
-          <div className="graphButton">
-            <button
-              onClick={() => {
-                handleButtonClick();
-                toggle();
-              }}
-            >
-              Predict My 8th sem status
-            </button>
-          </div>
+          {showbutton == false && (
+            <div className="noresult">
+              No result available to form a progress graph.
+            </div>
+          )}
+          {showbutton == true && (
+            <div className="graphButton">
+              <button
+                onClick={() => {
+                  handleButtonClick();
+                  toggle();
+                }}
+              >
+                Predict My 8th sem status
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <div id="popup">

@@ -1,15 +1,19 @@
-.graphBody{
-    display: flex;
-    justify-content: center;
-    padding-top: 1rem;
+.graphBody {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
 }
 
-.graphSection{
-    width: 80%;
+.graphSection {
+  width: 80%;
 }
 
-.graphButton{
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
+.graphButton {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.noresult {
+  text-align: center;
+  font-weight: bold;
 }

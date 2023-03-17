@@ -68,7 +68,9 @@ function Cash() {
                       id="exampleSelectSemester"
                       innerRef={semester}
                     >
-                      <option disabled selected value="">--Choose--</option>
+                      <option disabled selected value="">
+                        --Choose--
+                      </option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -93,17 +95,16 @@ function Cash() {
                     />
                   </FormGroup>
 
-                    <Button
-                      id="subbtn"
-                      onClick={() => {
-                        setPostResult("Loading");
-                        postData();
-                        toggle();
-                      }}
-                    >
-                      Submit
-                    </Button>
-                   
+                  <Button
+                    id="subbtn"
+                    onClick={() => {
+                      setPostResult("Loading");
+                      postData();
+                      toggle();
+                    }}
+                  >
+                    Submit
+                  </Button>
                 </Form>
               </div>
             </div>
@@ -111,7 +112,14 @@ function Cash() {
         </div>
       </div>
       <div id="popup">
-        <div id="test1" onClick={toggle} className="close">
+        <div
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+          className="close"
+        >
           +
         </div>
         {postResult && (
@@ -120,7 +128,13 @@ function Cash() {
           </div>
         )}
 
-        <button id="test1" onClick={toggle}>
+        <button
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+        >
           Close
         </button>
       </div>

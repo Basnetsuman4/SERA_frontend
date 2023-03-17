@@ -9,12 +9,16 @@ export default function NoMatch() {
   return (
     <>
       <div className="body">
+        <div id="dash_clock" style={{ display: "none" }}></div>
+
         <div className="FPbody">
           <p>!!404!!</p>
           <br></br>
           <h1>Page Not Found</h1>
-          <br></br>cd
-          <button onClick={goBack}>Go Back</button>
+          <button id="btn"
+            style={{ color: "white", border: "none" }} onClick={goBack}>
+            Go Back
+          </button>
         </div>
       </div>
     </>

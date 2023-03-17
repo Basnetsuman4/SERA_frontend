@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuth } from "./Authentication/auth";
 
-const baseURL = "http://192.168.101.36:5000/api";
+const baseURL = "http://192.168.100.114:5000/api";
 
 const config = {
   baseURL: baseURL,
@@ -30,7 +30,6 @@ const useLogin = () => {
 
       if (res.status !== 200) {
         setAuthenticated(false);
-        setMessage(res.data.message);
         return false;
       }
 
@@ -50,9 +49,10 @@ const useLogin = () => {
 
       return true;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setAuthenticated(false);
-      setMessage(error);
+      sessionStorage.setItem("errmsg", error.response.data.message);
+      // setMessage(sessionStorage.getItem("errmsg"));
       return false;
     }
   };

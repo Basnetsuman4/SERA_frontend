@@ -1,0 +1,61 @@
+.bulk {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.bulkBody {
+  margin-top: 2rem;
+  height: 80%;
+  width: 80%;
+  border-radius: 30px;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+}
+
+.BBupgrade {
+  height: 30%;
+  border-bottom: black dotted 1px;
+}
+
+.BBupgrade .upgradeDiv {
+  /* background-color: springgreen; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bulkBody .confirmationDiv {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bulkBody .confirmationDiv .CUbtns {
+  margin-top: 1rem;
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+}
+.BBfeeupgrade {
+  height: 100%;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.BBfeeupgrade .FUhead {
+  padding-left: 2.5rem;
+  width: 100%;
+}
+.BBfeeupgrade .FUbody {
+  padding: 1rem;
+  width: 80%;
+  height: 70%;
+  /* background-color: chartreuse;     */
+}

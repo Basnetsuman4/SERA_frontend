@@ -35,15 +35,17 @@ function DeleteUser() {
     <>
       <div className="contain" id="blur">
         <div className="content">
-          <p>confirm?</p>
-          <button
-            onClick={() => {
-              handleSubmit();
-              toggle();
-            }}
-          >
-            Delete
-          </button>
+          <div className="msgForLogout">
+            <p>Are you sure you want to delete this account? </p>
+            <button
+              onClick={() => {
+                handleSubmit();
+                toggle();
+              }}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
       <div id="popup">

@@ -58,7 +58,7 @@ const UpdateBill = () => {
         setPostResult(res.data.message);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setPostResult(err.response.data.message);
       });
   }
@@ -81,7 +81,8 @@ const UpdateBill = () => {
                   <div className="inputSection">
                     <FormGroup className="name">
                       <div className="forIndentation">
-                        <Label for="FullName">Full Name:</Label></div>
+                        <Label for="FullName">Full Name:</Label>
+                      </div>
                       <div className="IndentationData">
                         {data.firstName} {data.lastName}
                       </div>
@@ -89,34 +90,31 @@ const UpdateBill = () => {
 
                     <FormGroup className="Identity">
                       <div className="forIndentation">
-                        <Label for="username">Username:</Label></div>
-                      <div className="IndentationData">
-                        {data.userName}
+                        <Label for="username">Username:</Label>
                       </div>
+                      <div className="IndentationData">{data.userName}</div>
                     </FormGroup>
-                 
+
                     <FormGroup className="batch">
                       <div className="forIndentation">
-                        <Label for="exampleBatch">Batch:</Label></div>
-                      <div className="IndentationData">
-                        {data.batch}
+                        <Label for="exampleBatch">Batch:</Label>
                       </div>
+                      <div className="IndentationData">{data.batch}</div>
                     </FormGroup>
-                    
+
                     <FormGroup className="sem">
                       <div className="forIndentation">
-                      <Label for="examplesem">Semester:</Label>
-                        </div>
-                      <div className="IndentationData">
-                      {data.semester}
+                        <Label for="examplesem">Semester:</Label>
                       </div>
+                      <div className="IndentationData">{data.semester}</div>
                     </FormGroup>
-                 
+
                     <FormGroup>
                       <div className="forIndentation">
                         <Label for="exampleSelect">
                           Select which Semester to set Amount to{" "}
-                        </Label></div>
+                        </Label>
+                      </div>
                       <div className="IndentationData">
                         <Input
                           type="select"
@@ -124,7 +122,9 @@ const UpdateBill = () => {
                           id="selectStream"
                           onChange={handlesemester}
                         >
-                          <option disabled selected value="">--Choose--</option>
+                          <option disabled selected value="">
+                            --Choose--
+                          </option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -133,14 +133,14 @@ const UpdateBill = () => {
                           <option value="6">6</option>
                           <option value="7">7</option>
                           <option value="8">8</option>
-                          <option value="9">9</option>
                         </Input>
                       </div>
                     </FormGroup>
 
                     <FormGroup className="Contract">
                       <div className="forIndentation">
-                        <Label for="dueFee">Amount Fee</Label></div>
+                        <Label for="dueFee">Amount Fee</Label>
+                      </div>
                       <div className="IndentationData">
                         <Input
                           type="number"
@@ -149,13 +149,15 @@ const UpdateBill = () => {
                           placeholder="Enter Amount"
                           min="0"
                           innerRef={amount}
-                        /></div>
+                        />
+                      </div>
                     </FormGroup>
                   </div>
                   <div className="sub-btn">
                     <Button
                       variant="primary"
                       onClick={() => {
+                        setPostResult("Loading");
                         handleSubmit();
                         toggle();
                       }}
@@ -170,7 +172,13 @@ const UpdateBill = () => {
         </div>
       </div>
       <div id="popup">
-        <div onClick={toggle} className="close">
+        <div
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+          className="close"
+        >
           +
         </div>
         <h2> {postResult}</h2>
@@ -178,6 +186,7 @@ const UpdateBill = () => {
         <button
           onClick={() => {
             toggle();
+            window.location.reload(true);
           }}
         >
           Close

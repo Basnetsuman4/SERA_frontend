@@ -7,6 +7,9 @@ export function Confirmation() {
       <div className="msgForLogout">
         <p>Do you want to logout?</p>
         <button
+          id="btn"
+          style={{ border: "none", color: "white" }}
+
           onClick={() => {
             navigate("/logout");
           }}

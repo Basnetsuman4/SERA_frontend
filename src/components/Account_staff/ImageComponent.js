@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useToken } from "../../apis";
 import "../../css/imgcomp.css";
-
 
 export function ImageComponent() {
   const { tokenInstance } = useToken();
   const { state } = useLocation();
   const [voucher_id, setVoucher] = useState(null);
   const [postResult, setPostResult] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     setVoucher(state.detail.voucher_id);
@@ -46,11 +46,7 @@ export function ImageComponent() {
         <div className="content">
           <div className="verBody">
             <div className="verVouImg">
-              <img
-                className="small"
-                src={state.detail.image}
-                alt="Voucher"
-              />
+              <img className="small" src={state.detail.image} alt="Voucher" />
             </div>
             <div className="AmountSem">
               <div className="AS">
@@ -82,7 +78,14 @@ export function ImageComponent() {
         </div>
       </div>
       <div id="popup">
-        <div id="test1" onClick={showResultPopup} className="close">
+        <div
+          id="test1"
+          onClick={() => {
+            showResultPopup();
+            navigate("/secure/voucher");
+          }}
+          className="close"
+        >
           +
         </div>
         {postResult && (
@@ -91,7 +94,13 @@ export function ImageComponent() {
           </div>
         )}
 
-        <button id="test1" onClick={showResultPopup}>
+        <button
+          id="test1"
+          onClick={() => {
+            showResultPopup();
+            navigate("/secure/voucher");
+          }}
+        >
           Close
         </button>
       </div>

@@ -47,7 +47,11 @@ export function Selection() {
         <div className="btnsectionForResult">
           <div className="inputBx">
             <button
-              id="submitbtn"
+              id="btn"
+              style={{
+                border:"none",
+                color:"white"
+              }}
               name=""
               onClick={() =>
                 navigate("/secure/viewresult", {

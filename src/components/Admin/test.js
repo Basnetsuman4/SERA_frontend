@@ -52,17 +52,18 @@ const ChangePassword = () => {
         console.log(err);
       });
   }
-  // const [Password, setPassword] = useState("");
+
+  const [Password, setPassword] = useState("");
   const [valid, setValid] = useState(true);
 
   const validatePassword = (password) => {
-    const passwordRegex = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\W)(?=.{8,})/;
     return passwordRegex.test(password);
   };
 
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
-    // setPassword(newPassword);
+    setPassword(newPassword);
     setValid(validatePassword(newPassword));
   };
 
@@ -77,10 +78,10 @@ const ChangePassword = () => {
               </h4>
               <div className="criteriaSS">
                 <ul>
-                  {/* <li> Should start form uppercase</li> */}
-                  {/* <li> At least one lower case letter [a-z]</li> */}
-                  <li> At least one letter [A-Z]</li>
-                  <li> At least one number [0-9]</li>
+                  <li> Should start form uppercase</li>
+                  <li> At least one lower case letter [a-z]</li>
+                  <li> At least one upper case letter [A-Z]</li>
+                  <li> At least one numberal [0-9]</li>
                   <li> At least one symbol[!@#$%^&*]</li>
                   <li> Minumum 8 characters</li>
                 </ul>
@@ -120,10 +121,12 @@ const ChangePassword = () => {
                         type={state2 ? "text" : "password"}
                         name="new-password"
                         id="new-password"
+                        value={Password}
                         onChange={handlePasswordChange}
                         innerRef={newPassword}
                         // placeholder="Enter New-Password"
                       />
+
                       <span id="test1" onClick={toggleBtn2}>
                         {state2 ? <VisibilityOffIcon /> : <VisibilityIcon />}
                       </span>
@@ -148,13 +151,7 @@ const ChangePassword = () => {
                   </FormGroup>
                 </Form>
                 <div className="btnsub">
-                  <Button
-                    id="subbtn"
-                    onClick={() => {
-                      handleSubmit();
-                      toggle();
-                    }}
-                  >
+                  <Button id="subbtn" type="submit">
                     Submit
                   </Button>
                 </div>
@@ -164,14 +161,7 @@ const ChangePassword = () => {
         </div>
       </div>
       <div id="popup">
-        <div
-          id="test1"
-          onClick={() => {
-            toggle();
-            window.location.reload(true);
-          }}
-          className="close"
-        >
+        <div id="test1" onClick={toggle} className="close">
           +
         </div>
         {postresult && (
@@ -180,13 +170,7 @@ const ChangePassword = () => {
           </div>
         )}
 
-        <button
-          id="test1"
-          onClick={() => {
-            toggle();
-            window.location.reload(true);
-          }}
-        >
+        <button id="test1" onClick={toggle}>
           Close
         </button>
       </div>

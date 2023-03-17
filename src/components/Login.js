@@ -14,6 +14,7 @@ export default function Login() {
   const [postResult, setPostResult] = useState(null);
   const message = useAuth((state) => state.message);
   let isError = useState(false);
+  // let postResult = useState(null);
 
   const { login } = useLogin();
 
@@ -27,7 +28,9 @@ export default function Login() {
       isError = !isLoggedIn;
 
       if (!isLoggedIn) {
-        setPostResult("Sign in failed", message);
+        setPostResult(` ${sessionStorage.getItem("errmsg")}`);
+
+        // console.log(postResult);
         return;
       }
       navigate("/secure");
@@ -49,6 +52,7 @@ export default function Login() {
             <img src={SERAlogo} alt="Logo" />
           </div>
         </div>
+        <div id="dash_clock" style={{ display: "none" }}></div>
 
         <div className="loginBox">
           <div className="formBox">
@@ -60,6 +64,7 @@ export default function Login() {
                   className="type"
                   type="text"
                   name="name"
+                  autoComplete="none"
                   ref={username}
                   placeholder="Enter Username"
                 />
